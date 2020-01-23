@@ -2,12 +2,13 @@ const addMovieModal = document.getElementById('add-modal'); // selecting HTML ta
 // const addMovieModal = document.querySelector('#add-modal');
 const startAddButton = document.querySelector('header button'); // selecting button tag in header
 const backdrop = document.getElementById('backdrop');
-const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
+const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive'); // selecting cancel btn thru addMovieModal
 const addAddMovieButton = addMovieModal.querySelector('.btn--success');
+const userInputs = addMovieModal.querySelectorAll('input');
 
 
 const cancelBtnHandler = () => {
-    toggleMovieModal();
+    toggleMovieModalHandler();
 };
 
 const toggleBackDrop = () => {
@@ -20,14 +21,25 @@ const toggleMovieModalHandler = () => {
 };
 
 const toggleBackDropOffHandler = () => {
-    toggleMovieModal();
+    toggleMovieModalHandler();
 };
 
 const addMovieHandler = () => {
-
+    const titleValue = userInputs[0].value; // value property
+    const imageValue = userInputs[1].value;
+    const ratingValue = userInputs[2].value;
+    if (userInputs === '') {
+        alert('Please enter Title, Image and Rating');
+    } else if (!titleValue) {
+        alert('Please enter Title');
+    } else if (!imageValue) {
+        alert('Please enter Image');
+    } else if (ratingValue <= 0) {
+        alert('Please enter Rating');
+    }
 };
 
-startAddButton.addEventListener('click', toggleMovieModalHandler); // on click toggle modal and backdrop
+startAddButton.addEventListener('click', toggleMovieModalHandler);
 backdrop.addEventListener('click', toggleBackDropOffHandler);
 cancelAddMovieButton.addEventListener('click', cancelBtnHandler);
 addAddMovieButton.addEventListener('click', addMovieHandler);
