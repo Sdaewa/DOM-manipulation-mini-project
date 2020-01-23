@@ -1,4 +1,3 @@
-const addMovieModal = document.getElementById('add-modal');
+const addMovieModal = document.getElementById('add-modal'); // selecting HTML tag by id
 // const addMovieModal = document.querySelector('#add-modal');
-
-addMovieModal.
+const startAddButton = document.querySelector('header button');
