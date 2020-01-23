@@ -1,1 +1,1 @@
-# DOM-manipulation-mini-project
+# JS DOM-manipulation-mini-project
