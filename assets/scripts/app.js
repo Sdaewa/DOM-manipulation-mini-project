@@ -1,12 +1,16 @@
 const addMovieModal = document.getElementById('add-modal'); // selecting HTML tag by id
 // const addMovieModal = document.querySelector('#add-modal');
 const startAddButton = document.querySelector('header button'); // selecting button tag in header
-const addBackDrop = document.getElementById('backdrop');
+const backdrop = document.getElementById('backdrop');
 
-const addMovieModal = () => {
-    addMovieModal.classList.toggle('visible');
+const toggleBackDrop = () => {
+    backdrop.classList.toggle('visible');
 };
 
-const addBackDropModal
+const toggleMovieModal = () => {
+    addMovieModal.classList.toggle('visible');
+    toggleBackDrop(); // call backdrop func inside movieModal 
+};
 
-startAddButton.addEventListener('click', addMovieModal); // on click toggle modal
+
+startAddButton.addEventListener('click', toggleMovieModal); // on click toggle modal and backdrop
