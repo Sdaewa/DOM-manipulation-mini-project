@@ -3,5 +3,5 @@ const addMovieModal = document.getElementById('add-modal'); // selecting HTML ta
 const startAddButton = document.querySelector('header button'); // selecting button tag in header
 
 startAddButton.addEventListener('click', () => {
-    addMovieModal.classList.toggle('visible')
+    addMovieModal.classList.toggle('visible');
 }); // on click toggle modal
