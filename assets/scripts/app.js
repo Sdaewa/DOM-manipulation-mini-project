@@ -6,8 +6,7 @@ const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
 
 
 const cancelBtn = () => {
-    backdrop.classList.toggle('invisible');
-    addMovieModal.classList.toggle('invisible');
+    toggleMovieModal();
 };
 
 const toggleBackDrop = () => {
