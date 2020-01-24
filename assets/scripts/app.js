@@ -9,6 +9,7 @@ const userInputs = addMovieModal.querySelectorAll('input');
 
 const cancelBtnHandler = () => {
     toggleMovieModalHandler();
+    clearInput();
 };
 
 const toggleBackDrop = () => {
@@ -22,6 +23,12 @@ const toggleMovieModalHandler = () => {
 
 const toggleBackDropOffHandler = () => {
     toggleMovieModalHandler();
+};
+
+const clearInput = () => {
+    for (const input of userInputs) {
+        input.value = '';
+    }
 };
 
 const movies = [];
@@ -47,11 +54,14 @@ const addMovieHandler = () => {
         alert('Please enter valid values');
     }; // validating input for empty string or max-min rating
     const newMovies = {
-        title: title,
-        image: img,
-        rating: rating
+        title: titleValue,
+        image: imageValue,
+        rating: ratingValue
     };
     movies.push(newMovies);
+    console.log(movies);
+    toggleMovieModalHandler();
+    clearInput();
 };
 
 startAddButton.addEventListener('click', toggleMovieModalHandler);
