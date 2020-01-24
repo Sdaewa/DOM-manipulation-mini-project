@@ -84,7 +84,18 @@ const updateUI = () => {
     }
 };
 
-const renderMovie = () => {
+const renderMovie = (titleValue, imageValue, ratingValue) => {
+    const renderNewMovieElement = document.createElement('li');
+    renderNewMovieElement.className = 'movie-element';
+    renderNewMovieElement.innerHTML = `
+    <div class='movie-element-img'>
+        <img src='${imageValue} alt='${titleValue}>
+    </div>
+    <div>
+    <h2>${titleValue}</h2>
+    <p>${ratingValue}</p>
+    </div>
+    `
 
 };
 
