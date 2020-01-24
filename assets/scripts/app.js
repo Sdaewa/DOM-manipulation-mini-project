@@ -35,7 +35,32 @@ const clearInput = () => {
     }
 };
 
+// display box
 
+const updateUI = () => {
+    if (movies.length === 0) {
+        displayBox.style.display = 'block';
+    } else {
+        displayBox.style.display = 'none';
+    }
+};
+
+const renderMovie = (title, image, rating) => {
+    const renderNewMovieElement = document.createElement('li'); // creating a new list item element
+    renderNewMovieElement.className = 'movie-element'; // adding className to the newly created element
+    renderNewMovieElement.innerHTML = ` 
+    <div class='movie-element-img'>
+        <img src='${image} alt=''> 
+    </div>
+    <div>
+    <h2>${title}</h2>
+    <p>${rating} /5 stars</p>
+    </div>
+    `; // creates new HTML with title, images and rating values
+    const listRoot = document.getElementById('movie-list');
+    listRoot.appendChild(renderNewMovieElement); // append the new list to the ul tag
+
+};
 
 //adding movies
 
@@ -70,34 +95,12 @@ const addMovieHandler = () => {
     console.log(movies);
     toggleMovieModalHandler();
     clearInput();
+    renderMovie(renderMovie.title, renderMovie.image, renderMovie.rating);
     updateUI();
 };
 
 
-// display box
 
-const updateUI = () => {
-    if (movies.length === 0) {
-        displayBox.style.display = 'block';
-    } else {
-        displayBox.style.display = 'none';
-    }
-};
-
-const renderMovie = (titleValue, imageValue, ratingValue) => {
-    const renderNewMovieElement = document.createElement('li');
-    renderNewMovieElement.className = 'movie-element';
-    renderNewMovieElement.innerHTML = `
-    <div class='movie-element-img'>
-        <img src='${imageValue} alt='${titleValue}>
-    </div>
-    <div>
-    <h2>${titleValue}</h2>
-    <p>${ratingValue}</p>
-    </div>
-    `
-
-};
 
 
 
