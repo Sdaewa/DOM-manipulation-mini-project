@@ -24,6 +24,8 @@ const toggleBackDropOffHandler = () => {
     toggleMovieModalHandler();
 };
 
+const movies = [];
+
 const addMovieHandler = () => {
     const titleValue = userInputs[0].value; // value property
     const imageValue = userInputs[1].value;
@@ -43,7 +45,13 @@ const addMovieHandler = () => {
         +ratingValue < 1 ||
         +ratingValue > 5) {
         alert('Please enter valid values');
+    }; // validating input for empty string or max-min rating
+    const newMovies = {
+        title: title,
+        image: img,
+        rating: rating
     };
+    movies.push(newMovies);
 };
 
 startAddButton.addEventListener('click', toggleMovieModalHandler);
