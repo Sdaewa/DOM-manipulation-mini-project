@@ -5,7 +5,11 @@ const backdrop = document.getElementById('backdrop');
 const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive'); // selecting cancel btn thru addMovieModal
 const addAddMovieButton = addMovieModal.querySelector('.btn--success');
 const userInputs = addMovieModal.querySelectorAll('input');
+const displayBox = document.getElementById('entry-text');
 
+
+
+// handlers 
 
 const cancelBtnHandler = () => {
     toggleMovieModalHandler();
@@ -26,10 +30,14 @@ const toggleBackDropOffHandler = () => {
 };
 
 const clearInput = () => {
-    for (const input of userInputs) {
+    for (const input of userInputs) { // iterate thru each element of the array setting value back to ' '
         input.value = '';
     }
 };
+
+
+
+//adding movies
 
 const movies = [];
 
@@ -62,7 +70,25 @@ const addMovieHandler = () => {
     console.log(movies);
     toggleMovieModalHandler();
     clearInput();
+    updateUI();
 };
+
+
+// display box
+
+const updateUI = () => {
+    if (movies.length === 0) {
+        displayBox.style.display = 'block';
+    } else {
+        displayBox.style.display = 'none';
+    }
+};
+
+const renderMovie = () => {
+
+};
+
+
 
 startAddButton.addEventListener('click', toggleMovieModalHandler);
 backdrop.addEventListener('click', toggleBackDropOffHandler);
