@@ -7,10 +7,6 @@ const addAddMovieButton = addMovieModal.querySelector('.btn--success');
 const userInputs = addMovieModal.querySelectorAll('input');
 const displayBox = document.getElementById('entry-text');
 
-
-
-// handlers 
-
 const cancelBtnHandler = () => {
     toggleMovieModalHandler();
     clearInput();
@@ -35,8 +31,6 @@ const clearInput = () => {
     }
 };
 
-// display box
-
 const updateUI = () => {
     if (movies.length === 0) {
         displayBox.style.display = 'block';
@@ -45,10 +39,10 @@ const updateUI = () => {
     }
 };
 
-const renderMovie = (title, image, rating) => {
-    const renderNewMovieElement = document.createElement('li'); // creating a new list item element
-    renderNewMovieElement.className = 'movie-element'; // adding className to the newly created element
-    renderNewMovieElement.innerHTML = ` 
+const renderNewMovieElement = (title, image, rating) => {
+    const newMovieElement = document.createElement('li'); // creating a new list item element
+    newMovieElement.className = 'movie-element'; // adding className to the newly created element
+    newMovieElement.innerHTML = ` 
     <div class='movie-element-img'>
         <img src='${image} alt=''> 
     </div>
@@ -58,11 +52,8 @@ const renderMovie = (title, image, rating) => {
     </div>
     `; // creates new HTML with title, images and rating values
     const listRoot = document.getElementById('movie-list');
-    listRoot.appendChild(renderNewMovieElement); // append the new list to the ul tag
-
+    listRoot.append(newMovieElement); // append the new list to the ul tag
 };
-
-//adding movies
 
 const movies = [];
 
@@ -92,16 +83,12 @@ const addMovieHandler = () => {
         rating: ratingValue
     };
     movies.push(newMovies);
-    console.log(movies);
+    // console.log(movies);
     toggleMovieModalHandler();
     clearInput();
-    renderMovie(renderMovie.title, renderMovie.image, renderMovie.rating);
+    renderNewMovieElement(newMovieElement.title, newMovieElement.image, newMovieElement.rating);
     updateUI();
 };
-
-
-
-
 
 
 startAddButton.addEventListener('click', toggleMovieModalHandler);
