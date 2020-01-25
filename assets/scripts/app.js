@@ -7,6 +7,14 @@ const addAddMovieButton = addMovieModal.querySelector('.btn--success');
 const userInputs = addMovieModal.querySelectorAll('input');
 const displayBox = document.getElementById('entry-text');
 
+const updateUI = () => {
+    if (movies.length === 0) {
+        displayBox.style.display = 'block';
+    } else {
+        displayBox.style.display = 'none';
+    }
+};
+
 const cancelBtnHandler = () => {
     toggleMovieModalHandler();
     clearInput();
@@ -31,28 +39,21 @@ const clearInput = () => {
     }
 };
 
-const updateUI = () => {
-    if (movies.length === 0) {
-        displayBox.style.display = 'block';
-    } else {
-        displayBox.style.display = 'none';
-    }
-};
 
 const renderNewMovieElement = (title, image, rating) => {
     const newMovieElement = document.createElement('li'); // creating a new list item element
     newMovieElement.className = 'movie-element'; // adding className to the newly created element
     newMovieElement.innerHTML = ` 
-    <div class='movie-element-img'>
-        <img src='${image} alt=''> 
+    <div class='movie-element__image'>
+        <img src='${image}' alt=''> 
     </div>
-    <div>
-    <h2>${title}</h2>
-    <p>${rating} /5 stars</p>
+    <div class='movie-element__info'>
+    <h2>'${title}'</h2>
+    <p>'${rating} /5 stars'</p>
     </div>
     `; // creates new HTML with title, images and rating values
     const listRoot = document.getElementById('movie-list');
-    listRoot.append(newMovieElement); // append the new list to the ul tag
+    listRoot.appendChild(newMovieElement); // append the new list to the ul tag
 };
 
 const movies = [];
@@ -86,9 +87,10 @@ const addMovieHandler = () => {
     // console.log(movies);
     toggleMovieModalHandler();
     clearInput();
-    renderNewMovieElement(newMovieElement.title, newMovieElement.image, newMovieElement.rating);
+    renderNewMovieElement(newMovies.title, newMovies.image, newMovies.rating);
     updateUI();
 };
+
 
 
 startAddButton.addEventListener('click', toggleMovieModalHandler);
