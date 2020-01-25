@@ -39,8 +39,19 @@ const clearInput = () => {
     }
 };
 
+const deleteMovieHandler = (movieId) => {
+    let movieIndex = 0;
+    for (const movie of movies) {
+        if (movie.id === movieId) {
+            break;
+        }
+        movieIndex++;
+    }
+    movies.splice(movieIndex, 1); // remove element at given index
+};
 
-const renderNewMovieElement = (title, image, rating) => {
+
+const renderNewMovieElement = (id, title, image, rating) => {
     const newMovieElement = document.createElement('li'); // creating a new list item element
     newMovieElement.className = 'movie-element'; // adding className to the newly created element
     newMovieElement.innerHTML = ` 
@@ -52,6 +63,7 @@ const renderNewMovieElement = (title, image, rating) => {
     <p>'${rating} /5 stars'</p>
     </div>
     `; // creates new HTML with title, images and rating values
+    newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id));
     const listRoot = document.getElementById('movie-list');
     listRoot.appendChild(newMovieElement); // append the new list to the ul tag
 };
@@ -79,6 +91,7 @@ const addMovieHandler = () => {
         alert('Please enter valid values');
     }; // validating input for empty string or max-min rating
     const newMovies = {
+        id: Math.random.toString(), //create a random number (just for this purpose)
         title: titleValue,
         image: imageValue,
         rating: ratingValue
@@ -87,7 +100,7 @@ const addMovieHandler = () => {
     // console.log(movies);
     toggleMovieModalHandler();
     clearInput();
-    renderNewMovieElement(newMovies.title, newMovies.image, newMovies.rating);
+    renderNewMovieElement(newMovies.id, newMovies.title, newMovies.image, newMovies.rating);
     updateUI();
 };
 
