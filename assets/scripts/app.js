@@ -6,6 +6,8 @@ const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive'); // se
 const addAddMovieButton = addMovieModal.querySelector('.btn--success');
 const userInputs = addMovieModal.querySelectorAll('input');
 const displayBox = document.getElementById('entry-text');
+const listRoot = document.getElementById('movie-list');
+
 
 const updateUI = () => {
     if (movies.length === 0) {
@@ -48,6 +50,7 @@ const deleteMovieHandler = (movieId) => {
         movieIndex++;
     }
     movies.splice(movieIndex, 1); // remove element at given index
+    listRoot.children[movieIndex].remove();
 };
 
 
@@ -64,7 +67,6 @@ const renderNewMovieElement = (id, title, image, rating) => {
     </div>
     `; // creates new HTML with title, images and rating values
     newMovieElement.addEventListener('click', deleteMovieHandler.bind(null, id));
-    const listRoot = document.getElementById('movie-list');
     listRoot.appendChild(newMovieElement); // append the new list to the ul tag
 };
 
