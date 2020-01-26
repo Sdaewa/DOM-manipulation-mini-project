@@ -23,7 +23,7 @@ const cancelBtnHandler = () => {
     clearInput();
 };
 
-const toggleBackDrop = () => {
+const toggleBackDrop = () => { // <TODO change name of functions for backdrop
     backdrop.classList.toggle('visible');
     cancelMovieDeletion();
 };
