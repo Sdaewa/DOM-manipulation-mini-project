@@ -80,6 +80,7 @@ const deleteMovie = (movieId) => {
     movies.splice(movieIndex, 1); // remove element at given index
     listRoot.children[movieIndex].remove();
     closeMovieDeletionModal();
+    updateUI();
 };
 
 
