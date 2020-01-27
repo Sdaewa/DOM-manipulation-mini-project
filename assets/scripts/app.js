@@ -23,22 +23,23 @@ const cancelBtnHandler = () => {
     clearInput();
 };
 
-const toggleBackDrop = () => { // <TODO change name of functions for backdrop
-    backdrop.classList.toggle('visible');
-    cancelMovieDeletion();
-};
 
 const closeMovieModal = () => {
     addMovieModal.classList.remove('visible');
 };
 
-const showMovieModalHandler = () => {
+const showMovieModal = () => {
     addMovieModal.classList.add('visible');
     toggleBackDrop(); // call backdrop func inside movieModal 
 };
 
-const toggleBackDropOffHandler = () => {
+const toggleBackDrop = () => {
+    backdrop.classList.toggle('visible');
+};
+
+const toggleBackDropOff = () => {
     closeMovieModal();
+    closeMovieDeletionModal();
 };
 
 
@@ -54,7 +55,7 @@ const deleteMovieHandler = (movieId) => {
     // deleteMovie(movieId);
 };
 
-const cancelMovieDeletion = () => {
+const closeMovieDeletionModal = () => {
     toggleBackDrop();
     deleteMovieModal.classList.remove('visible');
 };
@@ -127,7 +128,7 @@ const addMovieHandler = () => {
 
 
 
-startAddButton.addEventListener('click', showMovieModalHandler);
-backdrop.addEventListener('click', toggleBackDropOffHandler);
+startAddButton.addEventListener('click', showMovieModal);
+backdrop.addEventListener('click', toggleBackDropOff);
 cancelAddMovieButton.addEventListener('click', cancelBtnHandler);
 addAddMovieButton.addEventListener('click', addMovieHandler);
