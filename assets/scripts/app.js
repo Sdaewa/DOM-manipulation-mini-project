@@ -10,6 +10,7 @@ const listRoot = document.getElementById('movie-list');
 const deleteMovieModal = document.getElementById('delete-modal');
 
 
+
 const updateUI = () => {
     if (movies.length === 0) {
         displayBox.style.display = 'block';
@@ -21,6 +22,7 @@ const updateUI = () => {
 const cancelBtnHandler = () => {
     closeMovieModal();
     clearInput();
+    toggleBackDropOff();
 };
 
 
@@ -40,6 +42,7 @@ const toggleBackDrop = () => {
 const toggleBackDropOff = () => {
     closeMovieModal();
     closeMovieDeletionModal();
+    clearInput();
 };
 
 
@@ -52,7 +55,13 @@ const clearInput = () => {
 const deleteMovieHandler = (movieId) => {
     deleteMovieModal.classList.add('visible');
     toggleBackDrop();
-    // deleteMovie(movieId);
+    const cancelDelBtn = deleteMovieModal.querySelector('.btn--passive');
+    let confirmDelBtn = deleteMovieModal.querySelector('.btn--danger');
+    confirmDelBtn.replaceWith(confirmDelBtn.cloneNode(true)); //Hacky solution but just to use cloneNode and replaceWith, creates a new DOM object
+    confirmDelBtn = deleteMovieModal.querySelector('.btn--danger');
+    cancelDelBtn.removeEventListener('click', closeMovieDeletionModal);
+    cancelDelBtn.addEventListener('click', closeMovieDeletionModal);
+    confirmDelBtn.addEventListener('click', deleteMovie.bind(null, movieId));
 };
 
 const closeMovieDeletionModal = () => {
@@ -70,6 +79,7 @@ const deleteMovie = (movieId) => {
     }
     movies.splice(movieIndex, 1); // remove element at given index
     listRoot.children[movieIndex].remove();
+    closeMovieDeletionModal();
 };
 
 
